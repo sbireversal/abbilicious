@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Prevent modern mobile browsers from making the page look too modern -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>abbilicious.com</title>
+
+  <style>
+    /* =========================================================
+       90s WEB PAGE
+       ========================================================= */
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #990000;
+      color: #ffffff;
+      font-family: "Times New Roman", Times, serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /*
+      The actual site is 4:3.
+      It scales down/up while maintaining that ratio.
+    */
+    #page {
+      position: relative;
+      width: min(100vw, calc(100vh * 4 / 3));
+      height: min(100vh, calc(100vw * 3 / 4));
+
+      min-width: 320px;
+      min-height: 240px;
+
+      overflow: hidden;
+
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(0,0,0,0.05) 0px,
+          rgba(0,0,0,0.05) 1px,
+          transparent 1px,
+          transparent 3px
+        ),
+        #aa0000;
+
+      border: 6px ridge #ff5555;
+      box-sizing: border-box;
+
+      text-align: center;
+    }
+
+    /* =========================================================
+       OLD-SCHOOL HEADER
+       ========================================================= */
+
+    #header {
+      height: 15%;
+      box-sizing: border-box;
+
+      background: #550000;
+      border-bottom: 5px double #ffcccc;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 5px;
+    }
+
+    #header h1 {
+      margin: 0;
+
+      color: #ffff00;
+      font-size: clamp(20px, 4vw, 42px);
+      font-weight: bold;
+
+      text-shadow:
+        3px 3px 0 #000000;
+
+      letter-spacing: 2px;
+    }
+
+    /* =========================================================
+       MAIN AREA
+       ========================================================= */
+
+    #main {
+      height: 85%;
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      box-sizing: border-box;
+
+      padding-top: 2%;
+    }
+
+    /*
+      The scary image shakes constantly.
+    */
+    #head {
+      width: 35%;
+      max-width: 260px;
+      height: auto;
+
+      image-rendering: auto;
+
+      animation: shake 0.09s infinite;
+    }
+
+    @keyframes shake {
+      0%   { transform: translate(0px, 0px) rotate(0deg); }
+      20%  { transform: translate(-3px, 2px) rotate(-1deg); }
+      40%  { transform: translate(3px, -2px) rotate(1deg); }
+      60%  { transform: translate(-2px, -3px) rotate(-1deg); }
+      80%  { transform: translate(2px, 3px) rotate(1deg); }
+      100% { transform: translate(0px, 0px) rotate(0deg); }
+    }
+
+    /* =========================================================
+       WARNING TEXT
+       ========================================================= */
+
+    #warning {
+      margin-top: 1%;
+
+      width: 90%;
+
+      color: #ffffff;
+
+      font-size: clamp(18px, 3vw, 34px);
+      font-weight: bold;
+
+      line-height: 1.1;
+
+      text-transform: lowercase;
+
+      text-shadow:
+        2px 2px 0 #000000,
+        -1px -1px 0 #550000;
+    }
+
+    #warning span {
+      color: #ffff00;
+    }
+
+    /* =========================================================
+       COUNTDOWN
+       ========================================================= */
+
+    #countdown-title {
+      margin-top: 2%;
+
+      font-size: clamp(15px, 2.3vw, 25px);
+      font-weight: bold;
+
+      color: #ffffff;
+
+      text-decoration: underline;
+
+      text-shadow: 2px 2px #000000;
+    }
+
+    #clock {
+      margin-top: 5px;
+
+      padding: 7px 15px;
+
+      background: #000000;
+
+      color: #00ff00;
+
+      border: 4px inset #cccccc;
+
+      font-family: "Courier New", Courier, monospace;
+
+      font-size: clamp(17px, 3vw, 34px);
+      font-weight: bold;
+
+      letter-spacing: 2px;
+
+      min-width: 60%;
+      box-sizing: border-box;
+
+      text-shadow:
+        0 0 5px #00ff00;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    #footer {
+      position: absolute;
+      bottom: 1.5%;
+      left: 0;
+
+      width: 100%;
+
+      font-size: clamp(10px, 1.5vw, 15px);
+
+      color: #ffcccc;
+    }
+
+    /* =========================================================
+       CRT / 90s EFFECT
+       ========================================================= */
+
+    #scanlines {
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.035) 0px,
+          rgba(255,255,255,0.035) 1px,
+          rgba(0,0,0,0.05) 2px,
+          rgba(0,0,0,0.05) 4px
+        );
+
+      z-index: 100;
+    }
+
+    /* =========================================================
+       SMALL SCREEN ADJUSTMENT
+       ========================================================= */
+
+    @media (max-height: 500px) {
+      #head {
+        width: 25%;
+      }
+
+      #warning {
+        margin-top: 0;
+      }
+
+      #countdown-title {
+        margin-top: 1%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="page">
+
+    <div id="header">
+      <h1>*** ABBILICIOUS.COM ***</h1>
+    </div>
+
+    <main id="main">
+
+      <!--
+        Put nohead.png in the SAME folder as this file.
+      -->
+      <img
+        id="head"
+        src="nohead.png"
+        alt="A scary head"
+      >
+
+      <div id="warning">
+        you have offended the abbilicious.<br>
+        <span>prepare for the clock</span>
+      </div>
+
+      <div id="countdown-title">
+        THE CLOCK REACHES ZERO ON MARCH 21, 2027
+      </div>
+
+      <div id="clock">
+        000d 00:00:00
+      </div>
+
+      <div id="footer">
+        abbilicious.com &nbsp; | &nbsp; ENTER AT YOUR OWN RISK
+      </div>
+
+    </main>
+
+    <!-- CRT scanline overlay -->
+    <div id="scanlines"></div>
+
+  </div>
+
+  <script>
+    /*
+      =========================================================
+      THE ABBILICIOUS CLOCK
+      =========================================================
+
+      Target:
+      March 21, 2027 at 00:00:00
+
+      The browser interprets this in the visitor's local
+      timezone, which is useful for a creepy "midnight" event.
+    */
+
+    const targetDate = new Date("2027-03-21T00:00:00");
+
+    const clock = document.getElementById("clock");
+
+    function updateClock() {
+      const now = new Date();
+
+      let difference = targetDate.getTime() - now.getTime();
+
+      if (difference <= 0) {
+        clock.textContent = "000d 00:00:00";
+
+        document.getElementById("warning").innerHTML =
+          "you have offended the abbilicious.<br>" +
+          "<span>THE CLOCK HAS ARRIVED.</span>";
+
+        return;
+      }
+
+      const totalSeconds = Math.floor(difference / 1000);
+
+      const days = Math.floor(totalSeconds / 86400);
+
+      const hours = Math.floor(
+        (totalSeconds % 86400) / 3600
+      );
+
+      const minutes = Math.floor(
+        (totalSeconds % 3600) / 60
+      );
+
+      const seconds =
+        totalSeconds % 60;
+
+      clock.textContent =
+        String(days).padStart(3, "0") + "d " +
+        String(hours).padStart(2, "0") + ":" +
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+    }
+
+    updateClock();
+
+    setInterval(updateClock, 1000);
+  </script>
+
+</body>
+</html>
